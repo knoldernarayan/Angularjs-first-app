@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!-- start data_ng_app my_app -->
+<html data-ng-app="myapp">
+<head>
+<meta charset="UTF-8">
+<title>DashBoard Angular</title>
+<link href="style/bootstrap.min.css" rel="stylesheet">
+<link href="style/mycss.css" rel="stylesheet">
+<script src="js/angular/lib/angular.min.js"></script>
+<script src="script/jquery.js"></script>
+<script src="script/bootstrap.min.js"></script>
+<script type="text/javascript" src="controller/searchText.js"></script>
+</head>
+<!-- start data_ng_controller DashboardController and initialise limit value with 10 -->
+<body data-ng-controller="DashboardController" data-ng-init="limit=10">
+	<!-- start container_fluid which contains all controls  -->
+	<div class="container-fluid">
+		<!-- start first row -->
+		<div class="row" style="background-color: black;">
+			<div id="header" class="col-md-12">
+				<label style="color: white; height: 40px;">Project name</label> <input
+					type="text" id="text1" value="search"
+					style="height: 40px; margin-left: 500px; margin-top: 10px;">
+				<label style="color: white; height: 40px; margin-left: 50px;">DashBoard</label>
+				<label style="color: white; height: 40px; margin-left: 50px;">Users</label>
+			</div>
+		</div>
+		<!-- end first row -->
+		<!-- start second row -->
+		<div class="row" style="background-color: white;">
+			<div id="header1" class="col-md-12">
+				<h1>Dashboard</h1>
+				<hr width="100%" size="15%" color="gray">
+			</div>
+		</div>
+		<!-- end second row -->
+		<!-- start third row  which contains data_ng_model limit,sort,and search text-->
+		<div class="row" style="background-color: white;">
+			<div id="header2" class="col-md-12">
+				<form class="form-inline">
+					<div class="form-group">
+						<label for="sel1" style="margin-left: 200px;">Limit:</label> <select
+							class="form-control" id="sel1" data-ng-model="limit" data-ng-init="limit=10">
+							<option value="10">10</option>
+							<option value="20">20</option>
+							<option value="30"">30</option>
+							<option value="40">40</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="sel1" style="margin-left: 50px;">SortBy:</label> <select
+							class="form-control" id="sel1" data-ng-model="sort" data-ng-init="sort='name'" data-ng-change="Sort(sort)">
+
+							<option value="name">By Name</option>
+							<option value="email">By email</option>
+							<option value="company">By company</option>
+							<option value="phone">By Phone
+								</optione>
+							<option value="date">By Date</option>
+						</select>
+					</div>
+					<label style="margin-left: 50px;">Search</label> <input type="text"
+						value="Search" style="margin-left: 50px;"
+						data-ng-model="searchText">
+				</form>
+				<hr width="100%" size="15%" color="gray">
+			</div>
+		</div>
+		<!-- end third row -->
+		<!-- start fourth row which contains data_ng_click and data_ng_repeat -->
+		<div class="row" style="background-color: white;">
+			<div id="header3" class="col-md-12">
+				<div>
+					<table id="table1">
+						<tr>
+							<th><a href="#" ng-click="Sort('name')">Name</a></th>
+							<th><a ng-click="Sort('email')">Email</a></th>
+							<th><a ng-click="Sort('company')">Company</a></th>
+							<th><a ng-click="Sort('phone')">Phone</a></th>
+							<th><a ng-click="Sort('date')">Date</a></th>
+						</tr>
+						<tr
+							data-ng-repeat="x in results |filter:searchText|limitTo:limit">
+							<td>{{ x.name }}</td>
+							<td>{{ x.email }}</td>
+							<td>{{ x.company }}</td>
+							<td>{{ x.phone}}</td>
+							<td>{{ x.date}}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- end fourth row -->
+	<!-- end container_fluid -->
+</body>
+<!-- end data_ng_controller DashboardController -->
+</html>
+<!-- end data_ng_app my_app -->

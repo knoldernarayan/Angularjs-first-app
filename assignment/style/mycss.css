@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+#table1, th, td {
+   border: 1px solid #99FF33;
+}
+
+th,td {
+    padding: 15px;
+}
+#table1 {
+    border-spacing: 5px;
+}
+th {
+    color: white;
+    background-color: #3399FF;
+}
